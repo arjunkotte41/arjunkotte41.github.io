@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<!-- Mobile support -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Tejuuu 🌸</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
+
+*{box-sizing:border-box;}
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(120deg,#ffd1dc,#cbe9ff);
+    font-family:'Quicksand',sans-serif;
+    overflow:hidden;
+}
+
+/* floating hearts */
+.heart{
+    position:absolute;
+    color:#ff6f91;
+    font-size:20px;
+    animation:floatUp 8s linear infinite;
+    opacity:0.7;
+}
+
+@keyframes floatUp{
+    from{
+        transform:translateY(100vh);
+    }
+    to{
+        transform:translateY(-10vh);
+    }
+}
+
+.card{
+    background:white;
+    padding:35px 30px;
+    border-radius:22px;
+    text-align:center;
+    width:92%;
+    max-width:360px;
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+    animation:pop 0.8s ease;
+    z-index:2;
+}
+
+@keyframes pop{
+    from{transform:scale(0.8);opacity:0;}
+    to{transform:scale(1);opacity:1;}
+}
+
+h1{
+    color:#ff5c8a;
+    margin-bottom:10px;
+    font-size:26px;
+}
+
+p{
+    color:#444;
+    font-size:16px;
+    line-height:1.5;
+}
+
+button{
+    margin-top:18px;
+    padding:10px 22px;
+    border:none;
+    border-radius:30px;
+    background:#ff85a2;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+    background:#ff5c8a;
+}
+
+.hidden{
+    display:none;
+}
+
+.big{
+    font-size:17px;
+    margin-top:10px;
+    color:#333;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+
+    <h1>Hey Tejuuu 🌸</h1>
+
+    <p>Before your exam…</p>
+
+    <p>Can I tell you something?</p>
+
+    <button id="btn">Tap here 💌</button>
+
+    <div id="msg" class="hidden">
+
+        <p class="big">
+            I just want you to know that I am
+            <b>already so proud of you</b>.
+        </p>
+
+        <p class="big">
+            You worked really hard.
+        </p>
+
+        <p class="big">
+            Go rock your exam 💪✨
+        </p>
+
+        <p style="margin-top:12px;color:#ff5c8a;">
+            You’ve got this 🌷
+        </p>
+
+        <p style="font-size:13px;margin-top:10px;">
+            — from someone who truly believes in you 💛
+        </p>
+
+    </div>
+
+</div>
+
+<script>
+const btn = document.getElementById("btn");
+const msg = document.getElementById("msg");
+
+btn.onclick = () => {
+    btn.style.display = "none";
+    msg.classList.remove("hidden");
+};
+
+/* floating hearts generator */
+const emojis = ["💗","🌸","✨","💫","💖"];
+
+function createHeart(){
+    const h = document.createElement("div");
+    h.className="heart";
+    h.innerText = emojis[Math.floor(Math.random()*emojis.length)];
+    h.style.left = Math.random()*100 + "vw";
+    h.style.fontSize = (16 + Math.random()*12) + "px";
+    h.style.animationDuration = (6 + Math.random()*5) + "s";
+    document.body.appendChild(h);
+
+    setTimeout(()=>h.remove(),10000);
+}
+
+setInterval(createHeart,700);
+</script>
+
+</body>
+</html>
