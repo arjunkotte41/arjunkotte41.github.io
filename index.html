@@ -7,7 +7,7 @@
 <title>For Tejuuu 🌸</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Quicksand:wght@500;700&display=swap');
 
 *{box-sizing:border-box;}
 
@@ -17,130 +17,478 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:linear-gradient(120deg,#ffd1dc,#cbe9ff);
-    font-family:'Quicksand',sans-serif;
+    background:linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+    background-size:400% 400%;
+    animation:gradientShift 15s ease infinite;
+    font-family:'Poppins',sans-serif;
     overflow:hidden;
 }
 
-/* floating hearts */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Enhanced floating elements */
 .heart{
     position:absolute;
-    color:#ff6f91;
-    font-size:20px;
-    animation:floatUp 8s linear infinite;
-    opacity:0.7;
+    animation:floatUp 8s linear infinite, sway 3s ease-in-out infinite;
+    opacity:0.8;
+    filter:drop-shadow(0 0 12px rgba(255,105,180,0.5));
 }
 
 @keyframes floatUp{
-    from{ transform:translateY(100vh); }
-    to{ transform:translateY(-10vh); }
+    from{ transform:translateY(100vh) scale(0); opacity:0; }
+    to{ transform:translateY(-10vh) scale(1); opacity:0; }
+}
+
+@keyframes sway {
+    0%, 100% { transform: translateX(0px); }
+    50% { transform: translateX(30px); }
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity:0; transform:scale(0); }
+    50% { opacity:1; transform:scale(1); }
+}
+
+.sparkle {
+    position:absolute;
+    pointer-events:none;
 }
 
 .card{
-    background:white;
-    padding:35px 30px;
-    border-radius:22px;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(10px);
+    padding:50px 40px;
+    border-radius:30px;
     text-align:center;
     width:92%;
-    max-width:360px;
-    box-shadow:0 20px 40px rgba(0,0,0,.15);
-    animation:pop 0.8s ease;
+    max-width:420px;
+    box-shadow:0 25px 65px rgba(0,0,0,0.25), 0 0 40px rgba(240,147,251,0.3);
+    animation:cardPop 0.9s cubic-bezier(0.34,1.56,0.64,1);
     z-index:2;
+    border:2px solid rgba(255,255,255,0.5);
+    position:relative;
+    overflow:hidden;
 }
 
-@keyframes pop{
-    from{transform:scale(0.8);opacity:0;}
-    to{transform:scale(1);opacity:1;}
+.card::before {
+    content:'';
+    position:absolute;
+    top:-50%;
+    left:-50%;
+    width:200%;
+    height:200%;
+    background:radial-gradient(circle, rgba(240,147,251,0.1) 0%, transparent 70%);
+    animation:shine 3s ease-in-out infinite;
+}
+
+@keyframes shine {
+    0%, 100% { transform:translate(-30%, -30%); }
+    50% { transform:translate(30%, 30%); }
+}
+
+@keyframes cardPop{
+    0% {
+        transform:scale(0.7) rotateX(30deg);
+        opacity:0;
+    }
+    60% {
+        transform:scale(1.05) rotateX(0deg);
+        opacity:1;
+    }
+    100% {
+        transform:scale(1) rotateX(0deg);
+        opacity:1;
+    }
+}
+
+.card-content {
+    position:relative;
+    z-index:3;
 }
 
 h1{
-    color:#ff5c8a;
-    margin-bottom:14px;
-    font-size:26px;
+    color:#764ba2;
+    margin-bottom:20px;
+    font-size:32px;
+    font-weight:800;
+    animation:titleGlow 0.8s ease 0.2s both;
+    letter-spacing:-0.5px;
+}
+
+@keyframes titleGlow {
+    from {
+        opacity:0;
+        transform:translateY(-20px) scale(0.8);
+        text-shadow:0 0 0px rgba(240,147,251,0);
+    }
+    to {
+        opacity:1;
+        transform:translateY(0) scale(1);
+        text-shadow:0 0 20px rgba(240,147,251,0.4);
+    }
 }
 
 p{
     color:#444;
     font-size:16px;
-    line-height:1.5;
+    line-height:1.8;
+    animation:fadeInUp 0.8s ease both;
 }
 
-button{
-    margin-top:18px;
-    padding:10px 24px;
-    border:none;
-    border-radius:30px;
-    background:#ff85a2;
-    color:white;
-    font-size:15px;
-    cursor:pointer;
-    transition:0.3s;
+.highlight{
+    color:#ff5c8a;
+    font-size:19px;
+    margin-bottom:12px;
+    font-weight:600;
+    animation-delay:0.3s;
 }
-
-button:hover{
-    transform:scale(1.05);
-    background:#ff5c8a;
-}
-
-.hidden{ display:none; }
 
 .big{
     font-size:17px;
     margin-top:10px;
     color:#333;
+    animation-delay:0.4s;
+    font-weight:500;
 }
 
-.highlight{
-    color:#ff5c8a;
-    font-size:18px;
-    margin-bottom:8px;
+@keyframes fadeInUp {
+    from {
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to {
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+button{
+    margin-top:28px;
+    padding:14px 36px;
+    border:none;
+    border-radius:40px;
+    background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    box-shadow:0 10px 30px rgba(102,126,234,0.4);
+    position:relative;
+    overflow:hidden;
+    font-family:'Poppins',sans-serif;
+}
+
+button::before {
+    content:'';
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:0;
+    height:0;
+    background:rgba(255,255,255,0.3);
+    border-radius:50%;
+    transform:translate(-50%, -50%);
+    transition:width 0.6s, height 0.6s;
+}
+
+button:hover {
+    transform:translateY(-3px) scale(1.08);
+    background:linear-gradient(135deg, #764ba2 0%, #f093fb 100%);
+    box-shadow:0 15px 40px rgba(240,147,251,0.5), 0 0 20px rgba(240,147,251,0.3);
+}
+
+button:hover::before {
+    width:300px;
+    height:300px;
+}
+
+button:active {
+    transform:translateY(-1px) scale(1.04);
+}
+
+.hidden{ 
+    display:none;
+    opacity:0;
+}
+
+.reveal {
+    animation:revealMessage 0.8s ease both;
+}
+
+@keyframes revealMessage {
+    from {
+        opacity:0;
+        transform:scale(0.9) rotateY(-20deg);
+    }
+    to {
+        opacity:1;
+        transform:scale(1) rotateY(0deg);
+    }
+}
+
+.msg-item {
+    animation:slideIn 0.6s ease both;
+}
+
+.msg-item:nth-child(1) { animation-delay:0.1s; }
+.msg-item:nth-child(2) { animation-delay:0.2s; }
+.msg-item:nth-child(3) { animation-delay:0.3s; }
+.msg-item:nth-child(4) { animation-delay:0.4s; }
+.msg-item:nth-child(5) { animation-delay:0.5s; }
+.msg-item:nth-child(6) { animation-delay:0.6s; }
+
+@keyframes slideIn {
+    from {
+        opacity:0;
+        transform:translateX(-30px);
+    }
+    to {
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+b {
+    background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    font-weight:700;
+}
+
+.pulse-text {
+    animation:pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        opacity:1;
+        transform:scale(1);
+    }
+    50% { 
+        opacity:0.8;
+        transform:scale(1.02);
+    }
+}
+
+/* Floating clouds - SVG version */
+.cloud-container {
+    position:absolute;
+    pointer-events:none;
+}
+
+@keyframes floatCloud {
+    from{ transform:translateX(-100vw); }
+    to{ transform:translateX(100vw); }
+}
+
+/* Floating bubbles */
+.bubble {
+    position:absolute;
+    background:radial-gradient(135deg, rgba(240,147,251,0.4) 0%, rgba(79,184,254,0.2) 100%);
+    border-radius:50%;
+    border:2px solid rgba(255,255,255,0.3);
+    pointer-events:none;
+    animation:floatBubble 6s ease-in-out infinite;
+}
+
+@keyframes floatBubble {
+    0% {
+        transform:translateY(100vh) translateX(0) scale(1);
+        opacity:0;
+    }
+    10% {
+        opacity:1;
+    }
+    90% {
+        opacity:1;
+    }
+    100% {
+        transform:translateY(-100vh) translateX(100px) scale(0.5);
+        opacity:0;
+    }
+}
+
+/* Floating stars */
+.float-star {
+    position:absolute;
+    pointer-events:none;
+    animation:floatStar 10s ease-in-out infinite;
+    filter:drop-shadow(0 0 6px rgba(255,215,0,0.7));
+}
+
+@keyframes floatStar {
+    0%, 100% { transform:translateY(0) scale(1) rotate(0deg) opacity(0.3); }
+    25% { transform:translateY(-50px) scale(1.2) rotate(90deg) opacity(0.7); }
+    50% { transform:translateY(-100px) scale(1.1) rotate(180deg) opacity(0.5); }
+    75% { transform:translateY(-50px) scale(1.2) rotate(270deg) opacity(0.7); }
+    100% { transform:translateY(0) scale(1) rotate(360deg) opacity(0.3); }
+}
+
+/* Floating circles decoration */
+.float-circle {
+    position:absolute;
+    border-radius:50%;
+    pointer-events:none;
+    border:2px solid rgba(255,255,255,0.4);
+    animation:floatCircle 8s ease-in-out infinite;
+}
+
+@keyframes floatCircle {
+    0%, 100% { transform:translateY(0) translateX(0) scale(1); opacity:0.2; }
+    50% { transform:translateY(-30px) translateX(20px) scale(1.1); opacity:0.5; }
+}
+
+/* Floating heart decoration above card */
+.decor-float {
+    position:absolute;
+    pointer-events:none;
+    animation:decorFloat 5s ease-in-out infinite;
+    filter:drop-shadow(0 2px 5px rgba(0,0,0,0.15));
+}
+
+@keyframes decorFloat {
+    0%, 100% { transform:translateY(0) scale(1) rotate(0deg); opacity:0.3; }
+    50% { transform:translateY(-30px) scale(1.15) rotate(10deg); opacity:0.8; }
+}
+
+/* Floating butterflies */
+.butterfly {
+    position:absolute;
+    pointer-events:none;
+    animation:flutter 3s ease-in-out infinite;
+    filter:drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+@keyframes flutter {
+    0%, 100% { transform:translateY(0) translateX(0) rotateZ(0deg); }
+    25% { transform:translateY(-20px) translateX(15px) rotateZ(20deg); }
+    50% { transform:translateY(-40px) translateX(0) rotateZ(0deg); }
+    75% { transform:translateY(-20px) translateX(-15px) rotateZ(-20deg); }
 }
 </style>
 </head>
 
 <body>
 
+<!-- SVG Definitions for realistic graphics -->
+<svg style="display:none">
+<defs>
+<!-- Flower SVG - Realistic pink flower -->
+<g id="flower">
+    <circle cx="50" cy="50" r="10" fill="#FFD700"/>
+    <ellipse cx="50" cy="22" rx="8" ry="18" fill="#FF69B4" opacity="0.95"/>
+    <ellipse cx="50" cy="22" rx="8" ry="18" fill="#FF69B4" opacity="0.95" transform="rotate(72 50 50)"/>
+    <ellipse cx="50" cy="22" rx="8" ry="18" fill="#FF1493" opacity="0.9" transform="rotate(144 50 50)"/>
+    <ellipse cx="50" cy="22" rx="8" ry="18" fill="#FFB6C1" opacity="0.9" transform="rotate(216 50 50)"/>
+    <ellipse cx="50" cy="22" rx="8" ry="18" fill="#FF69B4" opacity="0.95" transform="rotate(288 50 50)"/>
+    <circle cx="50" cy="50" r="6" fill="#FFC700"/>
+</g>
+
+<!-- Rose SVG - Realistic layered rose -->
+<g id="rose">
+    <circle cx="50" cy="50" r="8" fill="#DC143C"/>
+    <circle cx="50" cy="42" r="6" fill="#C41E3A" opacity="0.9"/>
+    <ellipse cx="58" cy="45" rx="5" ry="7" fill="#DC143C" opacity="0.85"/>
+    <ellipse cx="42" cy="45" rx="5" ry="7" fill="#DC143C" opacity="0.85"/>
+    <circle cx="50" cy="35" r="4" fill="#8B0000" opacity="0.8"/>
+    <path d="M 50 56 L 50 75" stroke="#228B22" stroke-width="2.5" fill="none"/>
+    <ellipse cx="45" cy="62" rx="3" ry="6" fill="#228B22" opacity="0.7"/>
+    <ellipse cx="55" cy="62" rx="3" ry="6" fill="#228B22" opacity="0.7"/>
+</g>
+
+<!-- Butterfly SVG - Realistic butterfly with details -->
+<g id="butterfly">
+    <ellipse cx="50" cy="50" rx="3" ry="10" fill="#333"/>
+    <circle cx="48" cy="42" r="2.5" fill="#333"/>
+    <ellipse cx="35" cy="38" rx="12" ry="16" fill="#FF6B9D" opacity="0.95"/>
+    <ellipse cx="65" cy="38" rx="12" ry="16" fill="#FF6B9D" opacity="0.95"/>
+    <ellipse cx="35" cy="58" rx="10" ry="14" fill="#FF8CC4" opacity="0.9"/>
+    <ellipse cx="65" cy="58" rx="10" ry="14" fill="#FF8CC4" opacity="0.9"/>
+    <circle cx="30" cy="32" r="2.5" fill="#FFD700" opacity="0.9"/>
+    <circle cx="70" cy="32" r="2.5" fill="#FFD700" opacity="0.9"/>
+    <path d="M 32 40 Q 28 45 32 50" stroke="#333" stroke-width="1" fill="none" opacity="0.6"/>
+    <path d="M 68 40 Q 72 45 68 50" stroke="#333" stroke-width="1" fill="none" opacity="0.6"/>
+</g>
+
+<!-- Leaf SVG - Realistic green leaf -->
+<g id="leaf">
+    <path d="M 50 20 Q 45 35 45 50 Q 45 65 50 75 Q 55 65 55 50 Q 55 35 50 20 Z" fill="#2D5016" opacity="0.85"/>
+    <path d="M 50 20 Q 50 35 50 50 Q 50 65 50 75" stroke="#1a3a0a" stroke-width="1" fill="none" opacity="0.5"/>
+    <path d="M 48 35 Q 45 35 48 45" stroke="#1a3a0a" stroke-width="0.5" fill="none" opacity="0.4"/>
+    <path d="M 52 35 Q 55 35 52 45" stroke="#1a3a0a" stroke-width="0.5" fill="none" opacity="0.4"/>
+</g>
+
+<!-- Star SVG - Golden star with glow -->
+<g id="star">
+    <polygon points="50,15 61,40 88,40 68,58 78,85 50,67 22,85 32,58 12,40 39,40" fill="#FFD700" opacity="0.95"/>
+    <polygon points="50,18 59,38 85,38 67,53 76,78 50,63 24,78 33,53 15,38 41,38" fill="#FFED4E" opacity="0.6"/>
+</g>
+
+<!-- Sparkle SVG - Realistic sparkle -->
+<g id="sparkle">
+    <polygon points="50,20 55,35 72,40 55,45 50,62 45,45 28,40 45,35" fill="#FFE4B5" opacity="0.95"/>
+    <polygon points="50,22 53,32 68,36 53,42 50,58 47,42 32,36 47,32" fill="#FFFACD" opacity="0.7"/>
+    <line x1="50" y1="10" x2="50" y2="20" stroke="#FFE4B5" stroke-width="1.5" opacity="0.6"/>
+    <line x1="50" y1="80" x2="50" y2="90" stroke="#FFE4B5" stroke-width="1.5" opacity="0.6"/>
+    <line x1="20" y1="50" x2="30" y2="50" stroke="#FFE4B5" stroke-width="1.5" opacity="0.6"/>
+    <line x1="70" y1="50" x2="80" y2="50" stroke="#FFE4B5" stroke-width="1.5" opacity="0.6"/>
+</g>
+
+<!-- Cloud SVG - Soft white cloud -->
+<g id="cloudSvg">
+    <path d="M 25 55 Q 15 35 35 25 Q 45 15 60 20 Q 75 12 82 32 Q 88 50 78 62 L 20 62 Q 10 58 25 55 Z" fill="#ffffff" opacity="0.8" stroke="#F0F0F0" stroke-width="0.8"/>
+    <path d="M 30 58 Q 25 50 42 45 Q 60 40 75 48 Q 80 55 75 60" fill="none" stroke="#F5F5F5" stroke-width="1" opacity="0.5"/>
+</g>
+</defs>
+</svg>
+
 <div class="card">
+    <div class="card-content">
+        <h1>Hey Tejuuu 🌸</h1>
 
-    <h1>Hey Tejuuu 🌸</h1>
-
-    <!-- First dialog -->
-    <p id="firstText" class="highlight">
-        Can I tell you something?
-    </p>
-
-    <button id="btn">Tap here 💌</button>
-
-    <!-- Second dialog -->
-    <div id="msg" class="hidden">
-
-        <p class="highlight">
-            All the very best Tejuuu 🫶
+        <!-- First dialog -->
+        <p id="firstText" class="highlight pulse-text">
+            Can I tell you something?
         </p>
 
-        <p class="big">
-            I just want you to know that I am
-            <b>already so proud of you</b>.
-        </p>
+        <button id="btn">Tap here 💌</button>
 
-        <p class="big">
-            You worked really hard.
-        </p>
+        <!-- Second dialog -->
+        <div id="msg" class="hidden">
 
-        <p class="big">
-            Go rock your exam 💪✨
-        </p>
+            <p class="highlight msg-item">
+                All the very best Tejuuu 🫶
+            </p>
 
-        <p style="margin-top:12px;color:#ff5c8a;">
-            You’ve got this 🌷
-        </p>
+            <p class="big msg-item">
+                I just want you to know that I am
+                <b>already so proud of you</b>.
+            </p>
 
-        <p style="font-size:13px;margin-top:10px;">
-            — from someone who truly believes in you 💛
-        </p>
+            <p class="big msg-item">
+                You worked really hard.
+            </p>
 
+            <p class="big msg-item">
+                Go rock your exam 💪✨
+            </p>
+
+            <p class="msg-item" style="margin-top:12px;color:#764ba2;font-weight:600;">
+                You've got this 🌷
+            </p>
+
+            <p class="msg-item" style="font-size:14px;margin-top:10px;color:#667eea;">
+                — from someone who truly believes in you 💛
+            </p>
+
+        </div>
     </div>
-
 </div>
 
 <script>
@@ -151,25 +499,266 @@ const firstText = document.getElementById("firstText");
 btn.onclick = () => {
     btn.style.display = "none";
     firstText.style.display = "none";
+    msg.classList.add("reveal");
     msg.classList.remove("hidden");
+    
+    // Create burst animation on click
+    createBurst();
 };
 
-/* floating hearts */
-const emojis = ["💗","🌸","✨","💫","💖"];
+/* Enhanced floating hearts with SVG graphics */
+const svgGraphics = ["flower", "rose", "butterfly", "leaf", "star"];
 
 function createHeart(){
     const h = document.createElement("div");
     h.className="heart";
-    h.innerText = emojis[Math.floor(Math.random()*emojis.length)];
+    
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 100 100");
+    svg.setAttribute("width", "30");
+    svg.setAttribute("height", "30");
+    
+    const graphicId = svgGraphics[Math.floor(Math.random()*svgGraphics.length)];
+    const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#" + graphicId);
+    svg.appendChild(use);
+    
+    h.appendChild(svg);
     h.style.left = Math.random()*100 + "vw";
-    h.style.fontSize = (16 + Math.random()*12) + "px";
-    h.style.animationDuration = (6 + Math.random()*5) + "s";
+    h.style.animationDuration = (6 + Math.random()*6) + "s";
+    h.style.opacity = 0.6 + Math.random()*0.4;
     document.body.appendChild(h);
 
-    setTimeout(()=>h.remove(),10000);
+    setTimeout(()=>h.remove(),12000);
 }
 
-setInterval(createHeart,700);
+setInterval(createHeart, 600);
+
+/* Burst particle effect on button click with SVG sparkles */
+function createBurst() {
+    const rect = btn.getBoundingClientRect();
+    const centerX = rect.left + rect.width/2;
+    const centerY = rect.top + rect.height/2;
+    
+    for(let i = 0; i < 12; i++) {
+        const particle = document.createElement("div");
+        particle.className = "sparkle";
+        
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("viewBox", "0 0 100 100");
+        svg.setAttribute("width", "24");
+        svg.setAttribute("height", "24");
+        
+        const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+        use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#sparkle");
+        svg.appendChild(use);
+        
+        particle.appendChild(svg);
+        particle.style.left = centerX + "px";
+        particle.style.top = centerY + "px";
+        particle.style.pointerEvents = "none";
+        document.body.appendChild(particle);
+        
+        const angle = (i / 12) * Math.PI * 2;
+        const velocity = 100 + Math.random() * 150;
+        const vx = Math.cos(angle) * velocity;
+        const vy = Math.sin(angle) * velocity;
+        
+        let x = centerX;
+        let y = centerY;
+        let life = 1;
+        
+        function animate() {
+            life -= 0.02;
+            x += vx * 0.016;
+            y += vy * 0.016;
+            vy += 98 * 0.016;
+            
+            particle.style.transform = `translate(${x - centerX}px, ${y - centerY}px) scale(${life})`;
+            particle.style.opacity = life;
+            
+            if(life > 0) requestAnimationFrame(animate);
+            else particle.remove();
+        }
+        
+        animate();
+    }
+}
+
+/* Create floating confetti on page load */
+function createConfetti() {
+    const colors = ["#667eea","#764ba2","#f093fb","#4facfe","#00f2fe"];
+    for(let i = 0; i < 3; i++) {
+        const conf = document.createElement("div");
+        conf.style.position = "absolute";
+        conf.style.width = "6px";
+        conf.style.height = "6px";
+        conf.style.background = colors[Math.floor(Math.random()*colors.length)];
+        conf.style.borderRadius = "50%";
+        conf.style.left = Math.random() * 100 + "%";
+        conf.style.top = "-10px";
+        conf.style.boxShadow = "0 0 10px currentColor";
+        conf.style.animation = `floatUp ${8 + Math.random()*4}s linear infinite`;
+        conf.style.opacity = "0.4";
+        document.body.appendChild(conf);
+        
+        setTimeout(() => conf.remove(), 12000);
+    }
+}
+
+// Create confetti periodically
+setInterval(createConfetti, 1500);
+
+/* Create floating clouds with SVG graphics */
+function createCloud() {
+    const cloudContainer = document.createElement("div");
+    cloudContainer.style.position = "absolute";
+    cloudContainer.style.pointerEvents = "none";
+    
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 100 100");
+    svg.setAttribute("width", "80");
+    svg.setAttribute("height", "50");
+    svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+    
+    const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#cloudSvg");
+    svg.appendChild(use);
+    
+    cloudContainer.appendChild(svg);
+    cloudContainer.style.top = Math.random() * 30 + "%";
+    cloudContainer.style.animationDuration = (15 + Math.random() * 15) + "s";
+    cloudContainer.style.animationDelay = Math.random() * 3 + "s";
+    cloudContainer.style.animation = `floatCloud ${15 + Math.random() * 15}s linear infinite`;
+    cloudContainer.style.animationDelay = Math.random() * 3 + "s";
+    document.body.appendChild(cloudContainer);
+    
+    setTimeout(() => cloudContainer.remove(), 35000);
+}
+
+// Create clouds periodically
+for(let i = 0; i < 3; i++) createCloud();
+setInterval(createCloud, 8000);
+
+/* Create floating bubbles */
+function createBubble() {
+    const bubble = document.createElement("div");
+    bubble.className = "bubble";
+    const size = 15 + Math.random() * 40;
+    bubble.style.width = size + "px";
+    bubble.style.height = size + "px";
+    bubble.style.left = Math.random() * 100 + "%";
+    bubble.style.animationDuration = (5 + Math.random() * 4) + "s";
+    bubble.style.animationDelay = Math.random() * 1 + "s";
+    document.body.appendChild(bubble);
+    
+    setTimeout(() => bubble.remove(), 10000);
+}
+
+setInterval(createBubble, 800);
+
+/* Create floating stars around screen with SVG graphics */
+function createFloatStar() {
+    const star = document.createElement("div");
+    star.className = "float-star";
+    
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 100 100");
+    svg.setAttribute("width", "28");
+    svg.setAttribute("height", "28");
+    
+    const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#star");
+    svg.appendChild(use);
+    
+    star.appendChild(svg);
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.animationDuration = (8 + Math.random() * 6) + "s";
+    star.style.animationDelay = Math.random() * 2 + "s";
+    document.body.appendChild(star);
+    
+    setTimeout(() => star.remove(), 16000);
+}
+
+setInterval(createFloatStar, 1200);
+
+/* Create floating circle decorations */
+function createFloatCircle() {
+    const circle = document.createElement("div");
+    circle.className = "float-circle";
+    const size = 20 + Math.random() * 50;
+    circle.style.width = size + "px";
+    circle.style.height = size + "px";
+    circle.style.left = Math.random() * 100 + "%";
+    circle.style.top = Math.random() * 100 + "%";
+    circle.style.borderColor = ["rgba(255,255,255,0.4)", "rgba(240,147,251,0.3)", "rgba(79,184,254,0.3)"][Math.floor(Math.random()*3)];
+    circle.style.animationDuration = (6 + Math.random() * 6) + "s";
+    circle.style.animationDelay = Math.random() * 2 + "s";
+    document.body.appendChild(circle);
+    
+    setTimeout(() => circle.remove(), 14000);
+}
+
+for(let i = 0; i < 4; i++) createFloatCircle();
+setInterval(createFloatCircle, 3000);
+
+/* Create decorative floating elements above card with SVG graphics */
+function createDecorFloat() {
+    const card = document.querySelector(".card");
+    if(!card) return;
+    
+    const graphics = ["flower", "rose", "butterfly", "sparkle", "leaf"];
+    const decor = document.createElement("div");
+    decor.className = "decor-float";
+    
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 100 100");
+    svg.setAttribute("width", "40");
+    svg.setAttribute("height", "40");
+    
+    const graphicId = graphics[Math.floor(Math.random()*graphics.length)];
+    const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#" + graphicId);
+    svg.appendChild(use);
+    
+    decor.appendChild(svg);
+    decor.style.left = (Math.random() * 60 + 20) + "%";
+    decor.style.top = (card.getBoundingClientRect().top - 80) + "px";
+    decor.style.animationDuration = (4 + Math.random() * 2) + "s";
+    decor.style.animationDelay = Math.random() * 1 + "s";
+    document.body.appendChild(decor);
+    
+    setTimeout(() => decor.remove(), 7000);
+}
+
+setInterval(createDecorFloat, 1000);
+
+/* Create floating butterflies with SVG graphics */
+function createButterfly() {
+    const butterfly = document.createElement("div");
+    butterfly.className = "butterfly";
+    
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 100 100");
+    svg.setAttribute("width", "35");
+    svg.setAttribute("height", "35");
+    
+    const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#butterfly");
+    svg.appendChild(use);
+    
+    butterfly.appendChild(svg);
+    butterfly.style.left = Math.random() * 100 + "%";
+    butterfly.style.top = Math.random() * 50 + "%";
+    butterfly.style.animationDuration = (3 + Math.random() * 3) + "s";
+    butterfly.style.animationDelay = Math.random() * 1 + "s";
+    document.body.appendChild(butterfly);
+    
+    setTimeout(() => butterfly.remove(), 8000);
+}
+
+setInterval(createButterfly, 2000);
 </script>
 
 </body>
